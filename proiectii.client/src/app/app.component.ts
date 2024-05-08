@@ -1,29 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ConectareAngularDotNetService } from './conectare-angular-dot-net.service';
+import { ApiService } from './api.service';
 
 @Component({
-  selector: 'app-root',
-  template: `
-    <h2>Games List</h2>
-    <ul>
-      <li *ngFor="let game of games">
-        {{ game.title }} - {{ game.genre }}
-      </li>
-    </ul>
-  `,
-  styleUrl: './app.component.css'
+  selector: 'app-data',
+  templateUrl: './data.component.html',
+  styleUrls: ['./data.component.css']
 })
-export class MyComponent implements OnInit {
-  data: any[] = [];
-
-  constructor(private conectare: ConectareAngularDotNetService) {}
+export class DataComponent implements OnInit {
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.conectare.getDataFromEndpoint().subscribe((result) => {
-      this.data = result;
+    this.apiService.getData().subscribe(data => {
+      // Process the data received from the backend
     });
   }
-
-  title = 'proiectii.client';
 }

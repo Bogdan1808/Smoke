@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:4200",
 "RedirectUrl": "",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "c:\\Apps\\II Proiect\\ProiectII\\ProiectII.Server\\..\\proiectii.client",
+"WorkingDirectory": "c:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\ProiectII.Server\\..\\proiectii.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

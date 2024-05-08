@@ -1234,11 +1234,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Apps\\II Proiect\\ProiectII\\ProiectII.server\\ProiectII.Server.csproj",
+      "projectUniqueName": "C:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\ProiectII.Server\\ProiectII.Server.csproj",
       "projectName": "ProiectII.Server",
-      "projectPath": "C:\\Apps\\II Proiect\\ProiectII\\ProiectII.server\\ProiectII.Server.csproj",
+      "projectPath": "C:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\ProiectII.Server\\ProiectII.Server.csproj",
       "packagesPath": "C:\\Users\\bnpas\\.nuget\\packages\\",
-      "outputPath": "C:\\Apps\\II Proiect\\ProiectII\\ProiectII.server\\obj\\",
+      "outputPath": "C:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\ProiectII.Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bnpas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1304,7 +1304,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

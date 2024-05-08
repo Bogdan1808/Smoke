@@ -1,1 +1,2 @@
 c:\Apps\II Proiect\ProiectII\proiectii.client\obj\Debug\proiectii.client.esproj.CoreCompileInputs.cache
+c:\Users\bnpas\Documents\GitHub\Proiect_II\proiectii.client\obj\Debug\proiectii.client.esproj.CoreCompileInputs.cache

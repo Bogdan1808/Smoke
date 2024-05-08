@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "PvrzlRfKl3EY3RNN/NXnCK1i2pIm4xBMnbhMfIW90Rk=",
+  "Hash": "poRZ/qP1W1Yw+jIYbLJd7HSFljLl231IbuUEtT9+6GU=",
   "Source": "ProiectII.Server",
   "BasePath": "_content/ProiectII.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "c:\\Apps\\II Proiect\\ProiectII\\proiectii.client\\proiectii.client.esproj",
+      "Identity": "c:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\proiectii.client\\proiectii.client.esproj",
       "Version": 2,
       "Source": "proiectii.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

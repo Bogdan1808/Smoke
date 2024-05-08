@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rRhvF2/7ZN04ihLGBp80oNcxMAtE4zgWR+C32A6U+bHAuNPBUhltgU/bQXos2SMhF9IrMiCf6qPmhwwuWubLvg==",
+  "dgSpecHash": "uDj2mJO85KJTk82B/yr8JPggrQmYHc1eqbY62a+u4LYrPsQE4b0qnOssujrwzUTuC8TB7T51TRMpkiouSM4fEg==",
   "success": true,
-  "projectFilePath": "c:\\Apps\\II Proiect\\ProiectII\\ProiectII.Server\\ProiectII.Server.csproj",
+  "projectFilePath": "C:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\ProiectII.Server\\ProiectII.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bnpas\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\bnpas\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

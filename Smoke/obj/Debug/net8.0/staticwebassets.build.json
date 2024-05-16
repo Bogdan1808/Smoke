@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "8Y3UmmdMEGr2cjsAWoEQu3UOopC9ZcsrJXdh4oVObz0=",
+  "Source": "Smoke",
+  "BasePath": "_content/Smoke",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Smoke\\wwwroot",
+      "Source": "Smoke",
+      "ContentRoot": "C:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\Smoke\\wwwroot\\",
+      "BasePath": "_content/Smoke",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\Smoke\\wwwroot\\css\\custom.css",
+      "SourceId": "Smoke",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bnpas\\Documents\\GitHub\\Proiect_II\\Smoke\\wwwroot\\",
+      "BasePath": "_content/Smoke",
+      "RelativePath": "css/custom.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\custom.css"
+    }
+  ]
+}

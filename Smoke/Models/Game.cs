@@ -1,18 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
-
-namespace Smoke.Models
+﻿namespace Smoke.Models
 {
-    public class Game
-    {
-        public int Id { get; set; }
+    public class Game : BaseEntity    
+    { 
         public required string Title { get; set; }
         public string Description { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public string Publisher { get; set; } = string.Empty;
-        public string Genre { get; set; } = string.Empty;
+        public Genre Genre { get; set; }
+        public int? GenreId { get; set; }
         public double Rating { get; set; }
         public double Price { get; set; }
     }

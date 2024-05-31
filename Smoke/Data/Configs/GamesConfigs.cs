@@ -13,5 +13,6 @@ public class GamesConfigs : IEntityTypeConfiguration<Game>
         builder.Property(g => g.Title).HasMaxLength(100).IsRequired();
         builder.Property(g => g.Publisher).IsRequired();
         builder.Property(g => g.ImageUrl).IsRequired();
+        builder.HasIndex(g => g.Title).IsUnique();
     }
 }

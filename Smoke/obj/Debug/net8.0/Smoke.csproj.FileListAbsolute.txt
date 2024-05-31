@@ -127,3 +127,7 @@ C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\runtimes\win-a
 C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\Smoke.staticwebassets.runtime.json
+C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\bnpas\Documents\GitHub\Proiect_II\Smoke\bin\Debug\net8.0\StackExchange.Redis.dll

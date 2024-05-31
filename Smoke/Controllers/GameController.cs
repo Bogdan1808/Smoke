@@ -1,96 +1,94 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Smoke.Data;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Smoke.DTO.Games;
 using Smoke.Models;
 using Smoke.Utils.Mappings;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Smoke.DTO;
+using Smoke.Interfaces;
+using Smoke.Utils.Helpers;
+using Smoke.Utils.Specifications;
 
 namespace Smoke.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class GameController : ControllerBase
+    public class GameController : BaseApiController
     {
-        private readonly DataContext _context;
+        private readonly IGenericRepository<Game> _gamesRepo;
+        private readonly IGenericRepository<Genre> _genresRepo;
+        private readonly IMapper _mapper;
 
-        public GameController(DataContext context)
+        public GameController(IGenericRepository<Game> gamesRepo, IGenericRepository<Genre> genresRepo, IMapper mapper)
         {
-            _context = context;
+            _gamesRepo = gamesRepo;
+            _genresRepo = genresRepo;
+            _mapper = mapper;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<Pagination<GameToReturnDto>>> GetAllGames([FromQuery]GameSpecParams gameParams)
+        {
+            var spec = new GamesWithGenresSpecification(gameParams);
+            var countSpec = new GameWithFiltersForCountSpecification(gameParams);
+            var totalItems = await _gamesRepo.CountAsync(countSpec);
+            var games = await _gamesRepo.ListAsync(spec);
+            var data = _mapper
+                .Map<IReadOnlyList<Game>, IReadOnlyList<GameToReturnDto>>(games);
+            
+            return Ok(new Pagination<GameToReturnDto>(gameParams.PageIndex, gameParams.PageSize, totalItems, data));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GameToReturnDto>> GetGame(int id)
+        {
+            var spec = new GamesWithGenresSpecification(id);
+            
+            var game = await _gamesRepo.GetEntityWithSpec(spec);
+
+            return _mapper.Map<Game, GameToReturnDto>(game);
+        }
+
+        [HttpGet("genres")]
+        public async Task<IReadOnlyList<Genre>> GetGenres()
+        {
+            return await _genresRepo.ListAllAsync();
+        }
+        
         [HttpPost]
-        public async Task<ActionResult> AddGame(AddGameRequest newGame)
+        public async Task<ActionResult<GameToReturnDto>> AddGame(GameToCreateDto gameToCreateDto)
         {
-            var existingGame = await _context.Games.FirstOrDefaultAsync(g => g.Title.ToLower() == newGame.Title.ToLower());
-            if (existingGame != null)
-            {
-                return BadRequest("Game title already exists.");
-            }
+            var game = _mapper.Map<GameToCreateDto, Game>(gameToCreateDto);
+            
+            _gamesRepo.Add(game);
+            await _gamesRepo.SaveChangesAsync();
 
-            var game = newGame.ToGame();
-            _context.Games.Add(game);
-            await _context.SaveChangesAsync();
+            var gameToReturn = _mapper.Map<Game, GameToReturnDto>(game);
 
-            return Ok();
+            return CreatedAtAction(nameof(GetGame), new { id = gameToReturn.Id }, gameToReturn);
         }
 
-
-
-        [HttpGet("{title}")]
-        public async Task<ActionResult<Game>> GetGame(string title)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateGame(int id, GameToUpdateDto gameToUpdateDto)
         {
-            var game = await _context.Games.FirstOrDefaultAsync(g => g.Title == title);
-            if (game == null)
-            {
-                return NotFound("Game not found.");
-            }
-            return Ok(game);
+            var game = await _gamesRepo.GetByIdAsync(id);
+            if (game == null) return NotFound();
+
+            _mapper.Map(gameToUpdateDto, game);
+
+            _gamesRepo.Update(game);
+            await _gamesRepo.SaveChangesAsync();
+
+            return Ok("Game updated successfully!");
         }
 
-
-        [HttpPut("{title}")]
-        public async Task<IActionResult> UpdateGame(string title, Game updatedGame)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteGame(int id)
         {
-            var existingGame = await _context.Games.FirstOrDefaultAsync(g => g.Title == title);
-            if (existingGame == null)
-            {
-                return NotFound("Game not found.");
-            }
+            var game = await _gamesRepo.GetByIdAsync(id);
+            if (game == null) return NotFound();
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            _gamesRepo.Delete(game);
+            await _gamesRepo.SaveChangesAsync();
 
-            existingGame.Description = updatedGame.Description;
-            existingGame.ImageUrl = updatedGame.ImageUrl;
-            existingGame.Publisher = updatedGame.Publisher;
-            existingGame.Genre = updatedGame.Genre;
-            existingGame.Rating = updatedGame.Rating;
-            existingGame.Price = updatedGame.Price;
-
-            _context.Entry(existingGame).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        [HttpDelete("{title}")]
-        public async Task<IActionResult> DeleteGame(string title)
-        {
-            var game = await _context.Games.FirstOrDefaultAsync(g => g.Title == title);
-            if (game == null)
-            {
-                return NotFound("Game not found.");
-            }
-
-            _context.Games.Remove(game);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok("Game deleted successfully!");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Smoke.Data
             .GetExecutingAssembly());
         }
         public DbSet<Game> Games { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         
     }
 }

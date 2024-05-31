@@ -1,22 +1,23 @@
-﻿using Smoke.DTO.Games;
+﻿using AutoMapper;
+using Smoke.DTO.Games;
 using Smoke.Models;
-using System.Runtime.CompilerServices;
+using Smoke.Utils.Helpers;
 
-namespace Smoke.Utils.Mappings;
-
-public static class GameExtensions
+namespace Smoke.Utils.Mappings
 {
-    public static Game ToGame(this AddGameRequest request)
+    public class GameExtensions : Profile
     {
-        return new Game
+        public GameExtensions()
         {
-            Title = request.Title,
-            Description = request.Description,
-            ImageUrl = request.ImageUrl,
-            Publisher = request.Publisher,
-            Genre = request.Genre,
-            Price = request.Price,
-            Rating = 0
-        };
+            CreateMap<Game, GameToReturnDto>()
+                .ForMember(d => d.Genre, o => o.MapFrom(s => s.Genre.Name))
+                .ForMember(d => d.ImageUrl, o => o.MapFrom<GameUrlResolver>());
+
+            CreateMap<GameToCreateDto, Game>()
+                .ForMember(d => d.Genre, o => o.MapFrom<GenreDataTypeResolver>());
+
+            CreateMap<GameToUpdateDto, Game>()
+                .ForMember(d => d.Genre, o => o.MapFrom<GenreDataTypeResolver>());
+        }
     }
 }
